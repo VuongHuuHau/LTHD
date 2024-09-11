@@ -59,7 +59,7 @@ from rest_framework import permissions
 
 class OwnerAuthenticated(permissions.IsAuthenticated):
     def has_object_permission(self, request, view, obj):
-        return super().has_object_permission(request, view, obj) and request.user == obj.user
+        return super().has_object_permission(request, view, obj) and request.user.id == obj.id
 
 
 class BaseRole(permissions.BasePermission):
@@ -81,3 +81,6 @@ class IsNurse(BaseRole):
 
 class IsPatient(BaseRole):
     allowed_roles = ['Patient']
+
+class IsDoctorOrNurseOrPatient(BaseRole):
+    allowed_roles = ['Doctor', 'Nurse', 'Patient']

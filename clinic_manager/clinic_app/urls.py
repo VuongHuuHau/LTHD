@@ -15,7 +15,7 @@ r.register('prescriptions', views.PrescriptionViewSet, basename='Prescription')
 r.register('services', views.ServiceViewSet, basename='Service')
 r.register('bills', views.BillViewSet, basename='Bill')
 # r.register('momo', views.Mo, basename='Bill')
-
+r.register('zalopay', views.ZaloPayViewset, basename='ZaloPay')
 
 urlpatterns = [
     path('', include(r.urls)),

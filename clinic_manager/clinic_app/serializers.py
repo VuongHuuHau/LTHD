@@ -112,7 +112,16 @@ class PrescriptionSerializer(serializers.ModelSerializer):
     #     return prescription
 
 
+# class BillSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Bill
+#         fields = ['prescription', 'nurse', 'status', 'total']
+
 class BillSerializer(serializers.ModelSerializer):
     class Meta:
         model = Bill
-        fields = ['prescription', 'nurse', 'status', 'total']
+        fields = ['prescription', 'status', 'total','zalopay_id']
+
+class CreatePaymentSerializer(serializers.Serializer):
+    amount = serializers.IntegerField(required=True)
+    description = serializers.CharField(required=True)

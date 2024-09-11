@@ -116,3 +116,7 @@ def get_dict_medicine_by_id(id):
         return medicine_dict
     except Medicine.DoesNotExist:
         return None
+    
+    
+def check_exist_pre_me(me,pre):
+    return PrescriptionMedicine.objects.filter(medicine=me,prescription_id=pre).first()

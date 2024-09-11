@@ -83,14 +83,14 @@ class Appointment(BaseModel):
 
     class TimeChoises(models.TextChoices):
         seven = '07:00:00',
-        eight = '08:00:00'
-        nine = '09:00:00'
-        ten = '10:00:00'
-        eleven = '11:00:00'
-        thirteen = '13:00:00'
-        fourteen = '14:00:00'
-        fifteen = '15:00:00'
-        sixteen = '16:00:00'
+        eight = '08:00:00',
+        nine = '09:00:00',
+        ten = '10:00:00',
+        eleven = '11:00:00',
+        thirteen = '13:00:00',
+        fourteen = '14:00:00',
+        fifteen = '15:00:00',
+        sixteen = '16:00:00',
         seventeen = '17:00:00'
 
         # class TimeChoice(models.TextChoices):
@@ -155,6 +155,8 @@ class Bill(BaseModel):  # Hoắ đơn
 
     prescription = models.OneToOneField(Prescription, related_name='bill', primary_key=True,
                                         on_delete=models.CASCADE, null=False)
-    nurse = models.ForeignKey(Nurse, on_delete=models.SET_NULL, null=True)
+    # nurse = models.ForeignKey(Nurse, on_delete=models.SET_NULL, null=True)
     status = models.CharField(max_length=10, choices=statusChoices, default=statusChoices.unpaid)
     total = models.FloatField()
+    zalopay_id = models.CharField(null=True, max_length=30)
+
